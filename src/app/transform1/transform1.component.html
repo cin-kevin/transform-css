@@ -1,0 +1,90 @@
+<style>
+    .menubar {
+        border:blue 2px solid;
+        background-color: silver;
+        position: relative;
+    }
+    .menuarea {
+        border:red 2px solid;
+        background-color: lightblue;
+        transition: 0.5s ease-in-out;
+        position: relative;
+        z-index: -1;
+    }
+    .menuarea.expand {
+        -webkit-transform: translate(0em,-17em);
+        transform: translate(0em,-17em);
+        z-index: -1;
+    }
+    .commentarea {
+        border:green 2px solid;
+        background-color: lightslategray;
+        transition: 0.5s ease-in-out;
+        position: relative;
+    }
+    .commentarea.expand {
+        -webkit-transform: translate(0em,-17em);
+        transform: translate(0em,-17em);
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row menubar">
+            <div class="col-md-2"><h1>Menu Icon</h1></div>
+            <div class="col-md-10">
+                <h1>Menu bar</h1>
+                <input type="button" (click)="openMenu()" value="Show menu" />
+            </div>
+        </div>
+        <div [ngClass]="isMenuOpen? 'row menuarea expand':'row menuarea'">
+            <div class="col-md-4">
+                <h1>Menu area</h1>
+                <ul>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                    <li>Menu 1</li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                abc
+                <hr>
+                def
+                <hr>
+                ghi
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div [ngClass]="isMenuOpen? 'row commentarea expand':'row commentarea'">
+            <div class="col-md-1">Long panel</div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div *ngFor="let item of comments" class="col-md-1"><textarea>{{item}}</textarea></div>
+                </div>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div [ngClass]="isMenuOpen? 'row commentarea expand':'row commentarea'">
+            <div class="col-md-1">Heavy scroll bar</div>
+            <div style="height: 300px;" class="col-md-10" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+                <div class="row">
+                    <div *ngFor="let item of comments" class="col-md-1"><textarea>{{item}}</textarea></div>
+                </div>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+        </div>
+    </div>
+</div>
+
+
